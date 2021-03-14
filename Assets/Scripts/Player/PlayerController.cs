@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private PlayerColision playerColision;
-    private float _horizontal;
+    Rigidbody2D rb;
+    PlayerColision playerColision;
+    Player player;
+    float _horizontal;
 
     [SerializeField] Transform _bala;
 
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         playerColision = GetComponent<PlayerColision>();
+        player = GetComponent<Player>();
         viradoDireita = true; // Padrao dos assets
     }
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
             _pulando = true;
         }
 
-        if(Input.GetButton("Fire1") && !tiroDisparado)
+        if(Input.GetButton("Fire1") && !tiroDisparado && player.municao > 0)
         {
             //Só atira se tiver parado e no chao
             //if(rb.velocity.x == 0 && playerColision.noChao)
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         tiroDisparado = true;
         _ataqueAtual = 3;
+        player.municao -= 1;
 
         StartCoroutine("tempoTiro");
 
