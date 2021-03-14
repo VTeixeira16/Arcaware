@@ -5,16 +5,22 @@ using UnityEngine;
 public class PlayerColision : MonoBehaviour
 {
     bool _noChao;
-    
+    Rigidbody2D rb;
+
     public bool noChao
     {
         get { return _noChao; }
         set { _noChao = value; }
     }
 
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        // Debug.Log("Velocidade Y:" + rb.velocity.y);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -25,18 +31,16 @@ public class PlayerColision : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        switch (collision.gameObject.tag)
+        switch (collider.gameObject.tag)
         {
             case "Moedas":
                 Debug.Log("Tocou moeda");
-                Destroy(collision.gameObject);
+                Destroy(collider.gameObject);
                 this.GetComponent<Player>().moedas += 1;
                 Debug.Log(this.GetComponent<Player>().moedas);
                 break;
-
-
             default:
                 break;
 

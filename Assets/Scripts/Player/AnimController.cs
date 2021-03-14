@@ -7,21 +7,18 @@ public class AnimController : MonoBehaviour
     Animator playerAnimator;
     Rigidbody2D rb;
     PlayerColision playerColision;
-    PlayerMovements playerMovements;
-    public Transform groundCheck;
+    PlayerController playerMovements;
 
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
-        playerMovements = GetComponent<PlayerMovements>();
+        playerMovements = GetComponent<PlayerController>();
         playerColision = GetComponent<PlayerColision>();
     }
 
     void FixedUpdate()
     {
         playerAnimator.SetBool("Pulando", !playerColision.noChao);
-        Debug.Log(!playerColision.noChao);
-
         if(playerMovements.horizontal != 0 )
         {
             playerAnimator.SetBool("Correndo", true);

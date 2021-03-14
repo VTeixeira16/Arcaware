@@ -7,6 +7,8 @@ TagManager:
   - Moedas
   - Enemy
   - Chao
+  - Tiro
+  - Plataforma
   layers:
   - Default
   - TransparentFX

@@ -2,15 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovements : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private PlayerColision playerColision;
     private float _horizontal;
 
+    [SerializeField] Transform _bala;
+
+    [SerializeField] float velocidadeTiro, delayTiro;
+    [SerializeField] GameObject tiroPrefab;
+
+    bool tiroDisparado;
+
+    public Transform bala
+    {
+        get { return _bala; }
+    }
+
     [SerializeField] int jumpForce;
     
-
     public float horizontal
     {
         get {return _horizontal;}
@@ -37,9 +48,19 @@ public class PlayerMovements : MonoBehaviour
     {
         _pulando = false;
         _horizontal = Input.GetAxis("Horizontal");
+
         if (Input.GetButton("Jump"))
         {
             _pulando = true;
+        }
+
+        if(Input.GetButton("Fire1") && !tiroDisparado)
+        {
+            //Só atira se tiver parado e no chao
+            //if(rb.velocity.x == 0 && playerColision.noChao)
+            {
+                Atirar();
+            }
         }
     }
 
@@ -51,8 +72,10 @@ public class PlayerMovements : MonoBehaviour
             PlayerJump();
         }
 
-
-        Flip(_horizontal);
+        if (_horizontal > 0 && !viradoDireita || _horizontal < 0 && viradoDireita)
+        {
+            Flip(_horizontal);
+        }
     }
 
     void PlayerMovement(float _horizontal)
@@ -65,7 +88,7 @@ public class PlayerMovements : MonoBehaviour
 
     void PlayerJump()
     {
-        Debug.Log("PlayerJump executado");
+        // Debug.Log("PlayerJump executado");
         rb.AddForce(new Vector2(0f, jumpForce));
         playerColision.noChao = false;
         // _pulando = false;
@@ -73,14 +96,36 @@ public class PlayerMovements : MonoBehaviour
 
     void Flip(float _horizontal)
     {
-        if(_horizontal > 0 && !viradoDireita || _horizontal < 0 && viradoDireita)
+        viradoDireita = !viradoDireita;
+        Vector2 theScale = transform.localScale;
+
+        theScale.x *= -1; //Inverte valores entre negativo e positivo.
+
+        velocidadeTiro *= -1;
+        transform.localScale = theScale;
+    }
+
+    void Atirar()
+    {
+        tiroDisparado = true;
+
+        StartCoroutine("tempoTiro");
+
+        GameObject temporarioTiro = Instantiate(tiroPrefab);
+        temporarioTiro.transform.position = bala.position;
+
+        if(!viradoDireita)
         {
-            viradoDireita = !viradoDireita;
-            Vector2 theScale = transform.localScale;
-
-            theScale.x *= -1; //Inverte valores entre negativo e positivo.
-
-            transform.localScale = theScale;
+            temporarioTiro.GetComponent<SpriteRenderer>().flipX = true;
         }
+
+        temporarioTiro.GetComponent<Rigidbody2D>().velocity = new Vector2(velocidadeTiro, 0);
+
+    }
+
+    IEnumerator tempoTiro()
+    {
+        yield return new WaitForSeconds(delayTiro);
+        tiroDisparado = false;
     }
 }
