@@ -9,6 +9,7 @@ public class AnimController : MonoBehaviour
     PlayerColision playerColision;
     PlayerController playerMovements;
 
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -19,6 +20,7 @@ public class AnimController : MonoBehaviour
     void FixedUpdate()
     {
         playerAnimator.SetBool("Pulando", !playerColision.noChao);
+        playerAnimator.SetInteger("Ataque", playerMovements.ataqueAtual);
         if(playerMovements.horizontal != 0 )
         {
             playerAnimator.SetBool("Correndo", true);
@@ -29,5 +31,11 @@ public class AnimController : MonoBehaviour
             // Se necessario, deve funcionar quando a velocidade for maior que determinado parametro.
             playerAnimator.SetBool("Correndo", false);
         }        
+
+        if(playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack3") && 
+           playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            playerMovements.ataqueAtual = 0;
+        }
     }
 }

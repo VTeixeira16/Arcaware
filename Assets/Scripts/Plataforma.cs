@@ -25,8 +25,6 @@ public class Plataforma : MonoBehaviour
         }
         else if(playerTransform.position.y - 2 > transform.position.y)
         {
-            Debug.Log("Player" + playerTransform.position.y);
-            Debug.Log("PLATAFORMA" + transform.position.y);
             collider.isTrigger = false;
         }
     }

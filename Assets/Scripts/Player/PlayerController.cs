@@ -10,28 +10,29 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform _bala;
 
-    [SerializeField] float velocidadeTiro, delayTiro;
     [SerializeField] GameObject tiroPrefab;
+    [SerializeField] float velocidadeTiro, delayTiro;
+    byte _ataqueAtual = 0;
+    bool tiroDisparado, viradoDireita, _pulando;
+    [SerializeField] int jumpForce, velocidadeMovimento;
 
-    bool tiroDisparado;
+    public byte ataqueAtual
+    {
+        get { return _ataqueAtual; }
+        set { _ataqueAtual = value; }
+
+    }
 
     public Transform bala
     {
         get { return _bala; }
     }
 
-    [SerializeField] int jumpForce;
-    
     public float horizontal
     {
         get {return _horizontal;}
     }
 
-    [SerializeField]
-    private int velocidadeMovimento;
-
-    private bool viradoDireita, _pulando;
-    
     public bool pulando
     {
         get { return _pulando; }
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         playerColision = GetComponent<PlayerColision>();
         viradoDireita = true; // Padrao dos assets
@@ -108,6 +110,7 @@ public class PlayerController : MonoBehaviour
     void Atirar()
     {
         tiroDisparado = true;
+        _ataqueAtual = 3;
 
         StartCoroutine("tempoTiro");
 
