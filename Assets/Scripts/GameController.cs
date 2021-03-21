@@ -6,9 +6,9 @@ public class GameController : MonoBehaviour
 {
     //TODO GAMECONTROLLER DEVE SER MIGRADAO PARA Primeira tela de carregamento, para evitar que varias sejam criados
 
-    [SerializeField] private int pontuacao;
+    [SerializeField] int _pontuacao;
 
-    private int _moedas;
+    int _moedas;
 
     public int moedas
     {
@@ -18,17 +18,37 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(this.gameObject);
+
+        CarregaDados();
+        ApagaDados();
+
     }
 
-    void Start()
+
+    void GravaDados()
     {
-
+        PlayerPrefs.SetInt("vidas_do_player", 3);
+        PlayerPrefs.SetInt("pontuacao_do_player", 0);
+        PlayerPrefs.SetString("nome_do_player", "Victor");
     }
 
+    void CarregaDados()
+    {
+        _pontuacao = PlayerPrefs.GetInt("pontuacao_do_player");
+    }
+
+    void ApagaDados()
+    {
+        PlayerPrefs.DeleteKey("nome_do_player");
+    }
+    void ApagaTodosOsDados()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
     void Update()
     {
-        //Debug.Log("Pontuacao:" + pontuacao);
+        Debug.Log("Pontuacao:" + _pontuacao);
     }
 }

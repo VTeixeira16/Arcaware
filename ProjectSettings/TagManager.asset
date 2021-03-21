@@ -16,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - CenarioFrente
   - 
   - 
   - 
@@ -26,7 +26,7 @@ TagManager:
   - Chao
   - 
   - Fundo
-  - 
+  - CenarioFundo
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
   - name: Fundo
     uniqueID: 2732731531
     locked: 0
+  - name: CenarioFundo
+    uniqueID: 2754789421
+    locked: 0
   - name: Objects
     uniqueID: 2120652977
     locked: 0
@@ -57,4 +60,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1948850773
+    locked: 0
+  - name: CenarioFrente
+    uniqueID: 4020232441
     locked: 0

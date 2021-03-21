@@ -36,11 +36,11 @@ public class EnemyIA : MonoBehaviour
                 }
             }
 
-            if(position[idAlvo].position.x < inimigo.position.x && viradoDireita == true)
+            if(position[idAlvo].position.x > inimigo.position.x && viradoDireita == true)
             {
                 Flip();
             }
-            else if(position[idAlvo].position.x > inimigo.position.x && viradoDireita == false)
+            else if(position[idAlvo].position.x < inimigo.position.x && viradoDireita == false)
             {
                 Flip();
             }
