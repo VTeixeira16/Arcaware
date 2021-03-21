@@ -25,9 +25,26 @@ public class PlayerColision : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Chao"))
+        switch (collision.gameObject.tag)
         {
-            _noChao = true;
+            case "Chao":
+                _noChao = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Inimigo":
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, 450));
+                break;
+            default:
+                break;
         }
     }
 
@@ -35,16 +52,11 @@ public class PlayerColision : MonoBehaviour
     {
         switch (collider.gameObject.tag)
         {
-            case "Moedas":
-                Debug.Log("Tocou moeda");
-                Destroy(collider.gameObject);
-                this.GetComponent<Player>().moedas += 1;
-                Debug.Log(this.GetComponent<Player>().moedas);
+            case "Coletaveis":
+                collider.GetComponent<Coletaveis>().FoiColetado();
                 break;
             default:
                 break;
-
         }
     }
-
 }

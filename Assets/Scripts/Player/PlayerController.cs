@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject tiroPrefab;
     [SerializeField] float velocidadeTiro, delayTiro;
     byte _ataqueAtual = 0;
-    bool tiroDisparado, viradoDireita, _pulando;
+    bool tiroDisparado, _viradoDireita, _pulando;
     [SerializeField] int jumpForce, velocidadeMovimento;
 
     public byte ataqueAtual
@@ -39,13 +39,18 @@ public class PlayerController : MonoBehaviour
         get { return _pulando; }
     }
 
+    public bool viradoDireita
+    {
+        get { return _viradoDireita;}
+    }
+
     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
         playerColision = GetComponent<PlayerColision>();
         player = GetComponent<Player>();
-        viradoDireita = true; // Padrao dos assets
+        _viradoDireita = true; // Padrao dos assets
     }
 
     void Update()
@@ -76,7 +81,7 @@ public class PlayerController : MonoBehaviour
             PlayerJump();
         }
 
-        if (_horizontal > 0 && !viradoDireita || _horizontal < 0 && viradoDireita)
+        if (_horizontal > 0 && !_viradoDireita || _horizontal < 0 && _viradoDireita)
         {
             Flip(_horizontal);
         }
@@ -100,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     void Flip(float _horizontal)
     {
-        viradoDireita = !viradoDireita;
+        _viradoDireita = !_viradoDireita;
         Vector2 theScale = transform.localScale;
 
         theScale.x *= -1; //Inverte valores entre negativo e positivo.
@@ -120,7 +125,7 @@ public class PlayerController : MonoBehaviour
         GameObject temporarioTiro = Instantiate(tiroPrefab);
         temporarioTiro.transform.position = bala.position;
 
-        if(!viradoDireita)
+        if(!_viradoDireita)
         {
             temporarioTiro.GetComponent<SpriteRenderer>().flipX = true;
         }

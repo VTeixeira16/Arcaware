@@ -26,7 +26,7 @@ public class TiroController : MonoBehaviour
         Destroy(this.gameObject);
 
         //Destroi objeto que receber tiro
-        if (collision.gameObject.tag.Equals("Enemy"))
+        if (collision.gameObject.tag.Equals("Inimigo"))
         {
             collision.gameObject.GetComponent<Enemy>().hp -= 1;
         }

@@ -17,5 +17,16 @@ public class Persons_core : MonoBehaviour
         set { _municao = value; }
     }
 
+    void Update()
+    {
+        if (hp <= 0)
+        {
+            hp = 0;
+            HpZerou();
+        }
+    }
+
+    //Funcoes que devem ser implementadas indidualmente no player e enemy
+    protected virtual void HpZerou() {}
 
 }

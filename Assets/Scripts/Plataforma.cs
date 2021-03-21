@@ -23,7 +23,7 @@ public class Plataforma : MonoBehaviour
         {
             collider.isTrigger = true;
         }
-        else if(playerTransform.position.y - 2 > transform.position.y)
+        else if(playerTransform.position.y > transform.position.y)
         {
             collider.isTrigger = false;
         }

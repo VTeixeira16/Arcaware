@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Moedas
-  - Enemy
   - Chao
   - Tiro
   - Plataforma
+  - Coletaveis
+  - Inimigo
   layers:
   - Default
   - TransparentFX
@@ -20,8 +20,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Player
+  - Inimigo
   - 
   - Chao
   - 
@@ -51,6 +51,9 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 2120652977
+    locked: 0
+  - name: Tiles
+    uniqueID: 1297776249
     locked: 0
   - name: Player
     uniqueID: 1948850773

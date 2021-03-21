@@ -9,11 +9,11 @@ public class Enemy : Persons_core
         if (hp <= 0)
         {
             hp = 0;
-            hpZerou();
+            HpZerou();
         }
     }
 
-    void hpZerou()
+    protected override void HpZerou()
     {
         Debug.Log("Vida zerada");
         Destroy(this.gameObject);
