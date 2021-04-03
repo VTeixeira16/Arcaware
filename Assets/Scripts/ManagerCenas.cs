@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class ManagerCenas : MonoBehaviour
 {
+    GameController gameController;
+
+    void Awake()
+    {
+        gameController = GameObject.Find("GameControle").GetComponent<GameController>();
+    }
 
     public void CarregaCena(string scene)
-    {
+    {        
         SceneManager.LoadScene(scene);
+        gameController.levelTimer = 0;
     }
 
     public void QuitGame()

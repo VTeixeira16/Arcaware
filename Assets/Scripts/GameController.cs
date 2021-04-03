@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] int _pontuacao;
 
     int _moedas;
+    float _gameTimer, _levelTimer;
 
     public int moedas
     {
@@ -16,15 +17,23 @@ public class GameController : MonoBehaviour
         set { _moedas = value; }
     }
 
+    public float gameTimer
+    {
+        get { return _gameTimer;}
+    }
+
+    public float levelTimer
+    {
+        get { return _levelTimer; }
+        set { _levelTimer = value; }
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
         CarregaDados();
-        ApagaDados();
-
+        // ApagaDados();
     }
-
 
     void GravaDados()
     {
@@ -49,6 +58,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Pontuacao:" + _pontuacao);
+        _gameTimer = _gameTimer + Time.deltaTime;
+        _levelTimer = _levelTimer + Time.deltaTime;
+        // Debug.Log("GameTimer: " + _gameTimer);
+        // Debug.Log("LevelTimer: " + _levelTimer);
+        // Debug.Log("Pontuacao:" + _pontuacao);
     }
 }
