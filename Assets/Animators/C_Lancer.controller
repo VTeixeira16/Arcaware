@@ -37,7 +37,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: PlayerProximo
+    m_ConditionEvent: Atacando
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: hp
@@ -116,18 +116,18 @@ AnimatorController:
   m_Name: C_Lancer
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: PlayerProximo
+  - m_Name: Atacando
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: hp
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 5
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -205,7 +205,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: PlayerProximo
+    m_ConditionEvent: Atacando
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: hp

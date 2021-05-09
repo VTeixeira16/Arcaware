@@ -198,6 +198,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5312254}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &14045404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14045405}
+  - component: {fileID: 14045406}
+  - component: {fileID: 14045407}
+  m_Layer: 11
+  m_Name: ColliderAttack
+  m_TagString: InimigoAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &14045405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14045404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1659412546}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &14045406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14045404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93940d18028d98043957831941e1574a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &14045407
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14045404}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.25, y: 1.5}
+  m_Direction: 0
 --- !u!4 &53851141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3349295792470795633, guid: 682a0e8691f6d094c8dff582384db4a7,
@@ -16000,7 +16060,7 @@ SpriteRenderer:
   m_SortingLayerID: 1948850773
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6373048116405451881, guid: cc01f76c2f2f65a478e4c8943cda0102,
+  m_Sprite: {fileID: -3880593464128027252, guid: 96a601d44554cff45bc35f367b6705c5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16025,6 +16085,7 @@ Transform:
   m_Children:
   - {fileID: 669578879}
   - {fileID: 1395109664}
+  - {fileID: 2036624445}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16040,6 +16101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d862eaf861e674cb510846b4f61e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderAtack: {fileID: 2036624444}
   _bala: {fileID: 1395109664}
   tiroPrefab: {fileID: 8213094538889230431, guid: fc0c54f14f9321e438e1008a574b1516,
     type: 3}
@@ -16104,6 +16166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea71a2060d186f44952f85ea3a7211d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderAttack: {fileID: 2036624444}
 --- !u!1 &1565353376
 GameObject:
   m_ObjectHideFlags: 0
@@ -16426,6 +16489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 3
   _municao: 0
+  ColliderAttack: {fileID: 14045406}
 --- !u!50 &1659412539
 Rigidbody2D:
   serializedVersion: 4
@@ -16544,7 +16608,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.3191776, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 14045405}
   m_Father: {fileID: 61797649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17466,6 +17531,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2036624444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036624445}
+  - component: {fileID: 2036624447}
+  - component: {fileID: 2036624446}
+  m_Layer: 10
+  m_Name: ColliderAttack
+  m_TagString: InimigoAttack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2036624445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036624444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1561365790}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2036624446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036624444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb87a162f30b0814091ab7b0928411a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &2036624447
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036624444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2, y: 1.5}
+  m_Direction: 0
 --- !u!1 &2069485186
 GameObject:
   m_ObjectHideFlags: 0

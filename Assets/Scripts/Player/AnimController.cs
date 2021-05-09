@@ -8,6 +8,7 @@ public class AnimController : MonoBehaviour
     Rigidbody2D rb;
     PlayerColision playerColision;
     PlayerController playerMovements;
+    [SerializeField] GameObject colliderAttack;
 
 
     void Start()
@@ -40,6 +41,7 @@ public class AnimController : MonoBehaviour
             || (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_Attack1_run") && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f))           
         {
             playerMovements.ataqueAtual = 0;
+            colliderAttack.SetActive(false);
         }
     }
 }

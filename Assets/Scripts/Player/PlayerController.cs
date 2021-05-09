@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     Player player;
     float _horizontal;
 
+    [SerializeField] GameObject colliderAtack;
+
     [SerializeField] Transform _bala;
 
     [SerializeField] GameObject tiroPrefab;
@@ -62,13 +64,23 @@ public class PlayerController : MonoBehaviour
         {
             _pulando = true;
         }
+        /*
+                if(Input.GetButton("Fire1") && !tiroDisparado && player.municao > 0)
+                {
+                    //Só atira se tiver parado e no chao
+                    //if(rb.velocity.x == 0 && playerColision.noChao)
+                    {
+                        Atirar();
+                    }
+                }
+        */
 
-        if(Input.GetButton("Fire1") && !tiroDisparado && player.municao > 0)
+        if (Input.GetButtonDown("Fire1"))
         {
             //Só atira se tiver parado e no chao
             //if(rb.velocity.x == 0 && playerColision.noChao)
             {
-                Atirar();
+                AtaqueEspada();
             }
         }
     }
@@ -112,6 +124,12 @@ public class PlayerController : MonoBehaviour
 
         velocidadeTiro *= -1;
         transform.localScale = theScale;
+    }
+
+    void AtaqueEspada()
+    {
+        colliderAtack.SetActive(true);
+        _ataqueAtual = 3;
     }
 
     void Atirar()

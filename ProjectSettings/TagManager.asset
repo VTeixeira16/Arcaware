@@ -9,6 +9,9 @@ TagManager:
   - Plataforma
   - Coletaveis
   - Inimigo
+  - Enemy
+  - InimigoAttack
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

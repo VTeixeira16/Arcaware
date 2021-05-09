@@ -6,6 +6,7 @@ public class Enemy : Persons_core
 {
 
     Animator enemyAnimator;
+    [SerializeField] EnemyColliderAttack ColliderAttack;
 
     void Start()
     {
@@ -14,6 +15,7 @@ public class Enemy : Persons_core
 
     void Update()
     {
+        enemyAnimator.SetBool("Atacando", ColliderAttack.colidindoPlayer);
         enemyAnimator.SetInteger("hp", _hp);
         Debug.Log("hp enemy: " + _hp);
         if (hp <= 0)
@@ -30,7 +32,6 @@ public class Enemy : Persons_core
 
     protected override void HpZerou()
     {
-        Debug.Log("Vida zerada");
         Destroy(this.gameObject);
     }
 }

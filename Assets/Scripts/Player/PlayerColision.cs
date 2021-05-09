@@ -6,6 +6,7 @@ public class PlayerColision : MonoBehaviour
 {
     bool _noChao;
     Rigidbody2D rb;
+    Player player;
 
     public bool noChao
     {
@@ -16,6 +17,7 @@ public class PlayerColision : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -37,15 +39,7 @@ public class PlayerColision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (collision.gameObject.tag)
-        {
-            case "Inimigo":
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, 450));
-                break;
-            default:
-                break;
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -54,6 +48,11 @@ public class PlayerColision : MonoBehaviour
         {
             case "Coletaveis":
                 collider.GetComponent<Coletaveis>().FoiColetado();
+                break;
+            case "InimigoAttack":
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, 450));
+                player.hp--;
                 break;
             default:
                 break;
