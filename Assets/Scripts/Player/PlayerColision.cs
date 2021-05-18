@@ -50,8 +50,8 @@ public class PlayerColision : MonoBehaviour
                 collider.GetComponent<Coletaveis>().FoiColetado();
                 break;
             case "InimigoAttack":
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, 450));
+                //rb.velocity = new Vector2(rb.velocity.x, 0);
+                //rb.AddForce(new Vector2(0, 450));
                 player.hp--;
                 break;
             default:

@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
+        //transform.position = player.transform.position;
     }
 
     void FixedUpdate()

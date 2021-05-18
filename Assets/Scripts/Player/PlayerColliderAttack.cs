@@ -26,7 +26,7 @@ public class PlayerColliderAttack : MonoBehaviour
         if (collision.gameObject.tag == "Inimigo")
         {
             _colidindoInimigo = false;
-            //Destroy(this);
+            //  Destroy(this);
         }
     }
 }
