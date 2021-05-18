@@ -6,7 +6,7 @@ public class EnemyIA : MonoBehaviour
 {
 
     [SerializeField] Transform inimigo;
-    [SerializeField] Transform[] position;
+    public Transform[] position;
     [SerializeField] float velocidade;
     [SerializeField] bool viradoDireita;
 

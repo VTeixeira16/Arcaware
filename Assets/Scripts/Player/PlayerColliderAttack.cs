@@ -16,7 +16,10 @@ public class PlayerColliderAttack : MonoBehaviour
         if (collision.gameObject.tag == "Inimigo")
         {
             _colidindoInimigo = true;
-            collision.GetComponent<Enemy>().hp--;
+            if (collision.GetComponent<Enemy>())
+                collision.GetComponent<Enemy>().hp--;
+            else if (collision.GetComponent<Boss>())
+                collision.GetComponent<Boss>().hp--;
             //Destroy(this);
         }
     }
