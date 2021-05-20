@@ -41,10 +41,17 @@ public class Boss : Persons_core
             {
                 InvocateLancer(InvocationPoints[i]);
             }
+            enemyAnimator.SetBool("invocando", true);
             invocouLancers = true;
             invocationTimer = 0;
         }
-        
+
+        if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Boss_Invocation") &&
+            enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            enemyAnimator.SetBool("invocando", false);
+        }
+
         if (hp <= 0)
         {
             hp = 0;
