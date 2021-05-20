@@ -7,21 +7,43 @@ public class Boss : Persons_core
     Animator enemyAnimator;
     [SerializeField] GameObject PrefabInvocate;
     [SerializeField] GameObject[] InvocationPoints;
+    [SerializeField] GameObject BossPoint;
+    Transform player;
+    bool invocouLancers = false;
+    float invocationTimer;
+    //Em segundos
+    [SerializeField] float invocationInterval;
+
 
     void Start()
     {
         enemyAnimator = GetComponent<Animator>();
 
-        for(int i = 0; i < InvocationPoints.Length; i++)
-        {
-            InvocateLancer(InvocationPoints[i]);
-        }
+        player = GameObject.Find("Player").GetComponent<Transform>();
 
     }
 
     void Update()
     {
+        invocationTimer += Time.deltaTime;
+        Debug.Log(invocationTimer);
+
         enemyAnimator.SetInteger("hp", _hp);
+
+        if(invocationTimer > invocationInterval)
+        {
+            invocouLancers = false;
+        }
+
+        if(player.transform.position.x > BossPoint.transform.position.x && !invocouLancers)
+        {
+            for (int i = 0; i < InvocationPoints.Length; i++)
+            {
+                InvocateLancer(InvocationPoints[i]);
+            }
+            invocouLancers = true;
+            invocationTimer = 0;
+        }
         
         if (hp <= 0)
         {
